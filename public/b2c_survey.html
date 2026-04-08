@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Life Optimization Quiz | Apollo</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #fafafa; color: #111; max-width: 600px; margin: 2rem auto; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #8b5cf6; font-size: 1.5rem; border-bottom: 2px solid #8b5cf6; padding-bottom: 1rem;}
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        input[type="text"], textarea, select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        button { background: #8b5cf6; color: white; padding: 1rem 2rem; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 2rem; font-size: 1.1rem; }
+        button:hover { background: #7c3aed; }
+        .success-box { display: none; background: #e0e7ff; color: #3730a3; padding: 1rem; border-radius: 4px; margin-top: 2rem; text-align: center; border: 1px solid #818cf8;}
+    </style>
+</head>
+<body>
+
+    <h1>Free Life Optimization Quiz (Unlock 100x Productivity)</h1>
+    <p>Tell us what you are struggling with right now, and our AI will immediately configure a free downloadable Life System to solve it.</p>
+
+    <div id="surveyForm">
+        <label>1. What is your primary life goal right now?</label>
+        <select id="q1">
+            <option>Losing Weight / Getting Fit</option>
+            <option>Making more Money / Budgeting</option>
+            <option>Finding a Relationship</option>
+            <option>Fixing mental health / burnout</option>
+            <option>Studying for an Exam</option>
+        </select>
+
+        <label>2. What is the single biggest thing stopping you from achieving this?</label>
+        <textarea id="q2" rows="3" placeholder="e.g. Too tired after work, no motivation, too expensive..."></textarea>
+
+        <label>3. How much are you willing to spend on a guaranteed solution?</label>
+        <select id="q3">
+            <option>$0</option>
+            <option>$1 - $10</option>
+            <option>$10 - $50</option>
+            <option>$50+</option>
+        </select>
+
+        <button onclick="submitSurvey()">Generate My AI Blueprint</button>
+    </div>
+
+    <div id="success" class="success-box">
+        <strong>Blueprint Generated!</strong> We've analyzed your bottlenecks.<br><br>
+        <a href="https://apolloagmanager.gumroad.com/l/yppmbw" style="color: #4338ca; font-weight: bold; font-size: 1.1rem;">[Click Here to Download Your Custom Notion Life OS]</a>
+    </div>
+
+    <script>
+        function submitSurvey() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            
+            const payload = `🛒 NEW B2C LEAK POINT:
+Category: ${q1}
+Pain: ${q2}
+AOV: ${q3}`;
+            
+            // Push directly to our internal Telegram via fetch
+            fetch(`https://api.telegram.org/bot8710070729:AAFWNPWbB9qdd0Ef0fypJzWIaHQYZND_nqg/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: '490527838', text: payload })
+            }).catch(e => console.error(e));
+
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
