@@ -54,10 +54,13 @@
             const q2 = document.getElementById('q2').value;
             const q3 = document.getElementById('q3').value;
             
-            const payload = \`🔥 NEW SURVEY TARGET:\\nFramework: \${q1}\\nPain Point: \${q2}\\nSpend: \${q3}\`;
+            const payload = `🔥 NEW SURVEY TARGET:
+Framework: ${q1}
+Pain Point: ${q2}
+Spend: ${q3}`;
             
             // Push directly to our internal Telegram via fetch
-            fetch(\`https://api.telegram.org/bot8710070729:AAFWNPWbB9qdd0Ef0fypJzWIaHQYZND_nqg/sendMessage\`, {
+            fetch(`https://api.telegram.org/bot8710070729:AAFWNPWbB9qdd0Ef0fypJzWIaHQYZND_nqg/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: '490527838', text: payload })
