@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 AI Developer Survey | Apollo</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #fafafa; color: #111; max-width: 600px; margin: 2rem auto; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #2563eb; font-size: 1.5rem; border-bottom: 2px solid #2563eb; padding-bottom: 1rem;}
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        input[type="text"], textarea, select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        button { background: #2563eb; color: white; padding: 1rem 2rem; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 2rem; font-size: 1.1rem; }
+        button:hover { background: #1d4ed8; }
+        .success-box { display: none; background: #dcfce7; color: #166534; padding: 1rem; border-radius: 4px; margin-top: 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h1>Apollo State of AI 2026 Survey</h1>
+    <p>Complete this 3-question telemetry survey to unlock our free proprietary 1,000x LLM Prompt Dataset.</p>
+
+    <div id="surveyForm">
+        <label>1. What is your primary development framework?</label>
+        <select id="q1">
+            <option>Next.js / React</option>
+            <option>Svelte / Vue</option>
+            <option>Python / FastAPI</option>
+            <option>Rust / Go</option>
+            <option>Other</option>
+        </select>
+
+        <label>2. What is your biggest AI friction point?</label>
+        <textarea id="q2" rows="3" placeholder="e.g. Prompt engineering, context limits, inference costs..."></textarea>
+
+        <label>3. How much do you spend monthly on AI APIs / SaaS?</label>
+        <select id="q3">
+            <option>$0</option>
+            <option>$1 - $50</option>
+            <option>$50 - $250</option>
+            <option>$250+</option>
+        </select>
+
+        <button onclick="submitSurvey()">Submit & Get Dataset</button>
+    </div>
+
+    <div id="success" class="success-box">
+        <strong>Survey complete!</strong> Thank you for the telemetry.<br><br>
+        <a href="https://apolloagmanager.gumroad.com/l/zwgvk" style="color: #166534; font-weight: bold;">[Download your 1,000x Prompts DB Here]</a>
+    </div>
+
+    <script>
+        function submitSurvey() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            
+            const payload = \`🔥 NEW SURVEY TARGET:\\nFramework: \${q1}\\nPain Point: \${q2}\\nSpend: \${q3}\`;
+            
+            // Push directly to our internal Telegram via fetch
+            fetch(\`https://api.telegram.org/bot8710070729:AAFWNPWbB9qdd0Ef0fypJzWIaHQYZND_nqg/sendMessage\`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: '490527838', text: payload })
+            });
+
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
